@@ -2,6 +2,8 @@
 #include "board.h"
 #include "printboard.h"
 
+char simb[11];
+int X1, Y1, X2, Y2;
 char board[8][8] = {{'R', 'H', 'B', 'Q', 'K', 'B', 'H', 'R'},
                     {'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
                     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -14,13 +16,30 @@ char board[8][8] = {{'R', 'H', 'B', 'Q', 'K', 'B', 'H', 'R'},
 
 int main()
 {
-    int X1, Y1, X2, Y2/*, W1, Z1, W2, Z2*/;
-    char simb[15];
-    
-    printf("Input our step: ");
-    fgets(simb, 12, stdin);
-    trans(simb, &X1, &Y1, &X2, &Y2/*, &W1, &Z1, &W2, &Z2*/);
-    move(X1, Y1, X2, Y2 /*W1, Z1, W2, Z2*/);
+    int stat = 0;
     printboard();
-   return 0;
+    printf("Example of step:'A1-A3' or 'A1xA3' for catch.\nPlease input a "
+           "Step: ");
+    while (1) {
+	  printf("Whites' step(big):");
+        simb_scan(1);
+        move();
+        printboard();
+        stat = check(1);
+        if (stat != 0) {
+            break;
+	   }
+
+	printf("Blacks' step(litle):");
+        simb_scan(2);
+        move();
+        printboard();
+        stat = check(2);
+        if (stat != 0) {
+            break;
+        }
+    }
+    printf("Player %d win\n", stat);
+
+    return 0;
 }

@@ -1,7 +1,14 @@
 #include <stdio.h>
 #ifndef BOARD_H
 #define BOARD_H
-void trans(char *simb, int *X1, int *Y1, int *X2, int *Y2/*, int *W1, int *Z1, int *W2, int *Z2*/);
-void move(int X1, int Y1, int X2, int Y2/*, int W1, int Z1, int W2, int Z2*/);
+int trans(char simb[11]);
+void move();
+void simb_scan();
+int white();
+int black();
+int checkY();
+int checkX();
+int checkD();
+int check(int stat);
 #endif
 
