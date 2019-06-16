@@ -1,6 +1,6 @@
+#include "board.h"
 #include <stdio.h>
 #include <string.h>
-#include "board.h"
 
 extern char board[8][8];
 extern char simb[11];
@@ -13,8 +13,8 @@ void simb_scan(int flag)
             fgets(simb, 11, stdin);
             if (trans(simb)) {
                 break;
-            }
             printf("Wrong input, try again:");
+            }
         }
         if (flag == 1) {
             if (white() == 1) {
@@ -29,13 +29,14 @@ void simb_scan(int flag)
             } else {
                 printf("Wrong input, try again:");
             }
-	}
+        }
     }
 }
 
 int trans(char simb[11])
 {
     if ((simb[2] != '-') && (simb[2] != 'x')) {
+        printf("Wrong input, try again:");
         return 0;
     }
     X1 = (int)simb[0] - 'A';
@@ -47,15 +48,17 @@ int trans(char simb[11])
         return 0;
     }
     if ((X2 < 8) && (X2 >= 0) && (Y2 >= 0) && (Y2 < 8) && (X1 >= 0) && (X1 < 8)
-        && (Y1 >= 0) && (Y1 < 8))
+        && (Y1 >= 0) && (Y1 < 8)){
         return 1;
+    }
     return 0;
 }
 
-void move() {
-        board[Y2][X2] = board[Y1][X1];
-        board[Y1][X1] = ' ';
-        }
+void move()
+{
+    board[Y2][X2] = board[Y1][X1];
+    board[Y1][X1] = ' ';
+}
 
 int white()
 {
@@ -79,8 +82,8 @@ int white()
             && ((X2 - X1 == 1) || (X2 - X1 == -1)) && (Y2 - Y1 == 1)
             && (simb[2] == 'x')) {
             return 1;
-        }}
-        break;
+        }
+    } break;
     case 'R':
         if ((simb[2] == '-') && (board[Y2][X2] != ' ')) {
             printf("You need to capture.\n");
@@ -93,7 +96,7 @@ int white()
             return 1;
         }
         break;
-    case 'N':
+    case 'H':
         if ((simb[2] == '-') && (board[Y2][X2] != ' ')) {
             printf("You need to capture.\n");
             break;
@@ -191,7 +194,7 @@ int black()
             return 1;
         }
         break;
-    case 'n':
+    case 'h':
         if ((simb[2] == '-') && (board[Y2][X2] != ' ')) {
             printf("You need to capture.\n");
             break;

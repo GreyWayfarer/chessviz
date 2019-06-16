@@ -1,5 +1,5 @@
-#include "../build/src/board.h"
-#include "../build/src/printboard.h"
+#include "../src/board.h"
+#include "../src/printboard.h"
 #include "../thirdparty/ctest.h"
 #include <stdio.h>
 #include <string.h>
@@ -222,7 +222,7 @@ CTEST(moving, moveknight) // Test N
 {
     strcpy(simb, "D4-D7"); // Step forward
     trans(simb);
-    board[Y1][X1] = 'N';
+    board[Y1][X1] = 'H';
     int c1 = white();
 
     strcpy(simb, "D4-D2"); // Step back
@@ -276,7 +276,7 @@ CTEST(moving, moveknight) // Test N
     strcpy(simb, "D4xE6"); // simb though figure 
     trans(simb);
     board[X1 + 1][Y1] = 'p';
-    board[Y2][X2] = 'n';
+    board[Y2][X2] = 'h';
     int c7 = white();
 
     board[Y1][X1] = ' ';
