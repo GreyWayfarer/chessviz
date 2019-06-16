@@ -11,4 +11,3 @@ int checkX();
 int checkD();
 int check(int stat);
 #endif
-
